@@ -1,27 +1,61 @@
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Project 3 | Interactive Project</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
+  <head>
+    <meta charset="utf-8" />
+    <title>Project 3 | Interactive Project</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-    <body>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" 
-        crossorigin="anonymous">
-        </script>
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
 
-        <script type = "text/javascript">
-        $ (document).ready (function () {
-            var key = "08718e42-b80f-4e43-a9e5-34e3f44986cd";
+    <script type="text/javascript">
+      $(document).ready(function () {
+        var key = "08718e42-b80f-4e43-a9e5-34e3f44986cd";
+        var settings = {
+          url: "https://api.jwstapi.com/all/type/jpg",
+          method: "GET",
+          timeout: 0,
+          headers: {
+            "X-API-KEY": "08718e42-b80f-4e43-a9e5-34e3f44986cd",
+          },
+        };
+
+        $.ajax(settings).done(function (response) {
+          //console.log(response);
+
+          console.log("here");
+          var data = response.body;
+          for (i = 0; i < 20; i++) {
+            //console.log(data[i]);
+
+            // this is the image
+            var imageStr = data[i].thumbnail;
+
+            //make sure the images actually exist
+            if (imageStr.length != 0) {
+              //could add another API call in here if you wanted to process the individual images
+
+              //create html tag
+              var image = '<img src="' + imageStr + '" alt="image">';
+              // add the html image tag to the images container
+              $(".images").append(image);
+            }
+          }
         });
-        </script>
-        
-        <section>
-            <h1>JWST Custom Images</h1>
-            <h2>High Definition Space Images Applying your colour themez, GURL!!</h2>
-            <div class="btn"><a href="#">Generate Image</a></div>
-        </section>
-    </body>
+      });
+    </script>
 
+    <section>
+      <h1>JWST Custom Images</h1>
+      <h2>High Definition Space Images Applying your colour themez, GURL!!</h2>
+      <div class="btn"><a href="#">Generate Image</a></div>
+      <div class="images">
+        <h2>images</h2>
+      </div>
+    </section>
+  </body>
 </html>

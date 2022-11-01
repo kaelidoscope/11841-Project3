@@ -21,7 +21,7 @@ section {
     min-height: 100vh;
     /* background: linear-gradient(to right,black,indigo,darkblue,blue,cyan,lime,yellow,orange,red,darkred,black);
   */
-    background-color: darkslateblue;
+    background-color: rgb(45, 35, 109);
 }
 
 section .btn {
@@ -51,7 +51,8 @@ section .btn a {
     letter-spacing: 1px;
     text-decoration: none;
     overflow: hidden;
-    transition: 0.5s;
+    transition: 0.3s;
+    backdrop-filter: blur(15px);
 
 }
 
@@ -68,8 +69,63 @@ section .btn a::before {
     height: 100%;
     background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
     transform: skewX(45deg) translateX(0);
+    transition: 0.5s;
 }
 
 section .btn:hover a::before {
-    transform: skewX(45deg) translateX(100%);
+    transform: skewX(45deg) translateX(200%);
+}
+
+section .btn::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -5px;
+    width: 30px;
+    height: 10px;
+    background: #00f;
+    border-radius: 10px;
+    transition: 0.5;
+    transition-delay: 0s;
+}
+
+section .btn:hover::before {
+    bottom: 0;
+    height: 50;
+    width: 80%;
+    border-radius: 30px;
+    transition-delay: 0.3s;
+}
+
+section .btn::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -5px;
+    width: 30px;
+    height: 10px;
+    background: #00f;
+    border-radius: 10px;
+    transition: 0.5;
+    transition-delay: 0s;
+}
+
+section .btn:hover::after {
+    top: 0;
+    height: 50;
+    width: 85%;
+    border-radius: 30px;
+    transition-delay: 0.2s;
+
+}
+
+section .btn:nth-child(3)::before,
+section .btn:nth-child(3)::after {
+    background: #2bd2ff;
+    box-shadow: 0 0 5px #2bd2ff,
+        0 0 15px #2bd2ff,
+        0 0 30px #2bd2ff,
+        0 0 60px #2bd2ff;
 }
