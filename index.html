@@ -29,7 +29,7 @@
 
           console.log("here");
           var data = response.body;
-          for (i = 0; i < 20; i++) {
+          for (i = 0; i < 250; i++) {
             //console.log(data[i]);
 
             // this is the image
@@ -38,6 +38,8 @@
             //make sure the images actually exist
             if (imageStr.length != 0) {
               //could add another API call in here if you wanted to process the individual images
+
+
 
               //create html tag
               var image = '<img src="' + imageStr + '" alt="image">';
@@ -52,9 +54,17 @@
     <section>
       <h1>JWST Custom Images</h1>
       <h2>High Definition Space Images Applying your colour themez, GURL!!</h2>
+      <div id="colourPalette">
+        <label for="colorpicker">First Colour </label>
+        <input type="color" id="colourPicker1" value="#FAC505" />
+        <label for="colorpicker">Middle Colour </label>
+        <input type="color" id="colourPicker2" value="#FAC505" />
+        <label for="colorpicker">Third Colour </label>
+        <input type="color" id="colourPicker3" value="#FAC505" />
+      </div>
       <div class="btn"><a href="#">Generate Image</a></div>
       <div class="images">
-        <h2>images</h2>
+        <h2>Images</h2>
       </div>
     </section>
   </body>
